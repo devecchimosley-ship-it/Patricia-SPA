@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia SPA - Sabores Tradicionales</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Palette e Variabili Eleganti */
+        :root {
+            --bg-color: #FDFBF7; /* Bianco perla caldo */
+            --surface: #FFFFFF;
+            --text-dark: #2C302E; /* Antracite */
+            --text-muted: #6B6B6B;
+            --accent-wine: #8C2727; /* Rosso Bordeaux */
+            --accent-gold: #C5A880; /* Oro tenue */
+            --border-light: #EBEBEB;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Sofisticato */
+        header {
+            background-color: rgba(253, 251, 247, 0.95);
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .brand-image {
+            width: 90px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--accent-wine);
+            font-style: italic;
+            font-weight: 400;
+            text-transform: lowercase;
+            font-size: 3.2rem;
+            margin-left: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        /* Hero Section (Aesthetic) */
+        .hero {
+            /* Immagine di alta cucina */
+            background: linear-gradient(rgba(20, 20, 20, 0.4), rgba(20, 20, 20, 0.6)), 
+                        url('https://images.unsplash.com/photo-1414235077428-338988692140?q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Sezione Storia (Design Editoriale) */
+        .story-section {
+            padding: 100px 0;
+            background-color: var(--surface);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin: 0 auto;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        .story-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Menù Elegante */
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--bg-color);
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            background: var(--surface);
+            padding: 40px 30px;
+            flex: 1 1 300px; 
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border-color: var(--accent-gold);
+        }
+
+        .menu-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .menu-item p.desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--accent-wine);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-select {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            padding: 12px 30px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-select:hover {
+            background-color: var(--accent-wine);
+            border-color: var(--accent-wine);
+            color: white;
+        }
+
+        /* Ricevuta dell'Ordine (Design Minimale) */
+        .order-summary {
+            max-width: 500px;
+            margin: 80px auto 0;
+            background: var(--surface);
+            padding: 40px;
+            border: 1px solid var(--border-light);
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .order-summary.active {
+            opacity: 1;
+            border-color: var(--accent-gold);
+        }
+
+        .order-summary h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--text-dark);
+        }
+
+        .total-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        #total-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--accent-wine);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        footer span {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 2.5rem; }
+            .logo-text { font-size: 2.2rem; }
+            .logo-text span { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo" class="brand-image" onerror="this.style.display='none'">
+            <div class="logo-text">Patricia <span>spa</span></div>
+            <p class="subtitle">Grupo Los Escalones</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Tradición en cada bocado</h2>
+            <p>Descubre el auténtico sabor de la cocina de casa, elaborada con pasión y al alcance de todos.</p>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra Historia</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="story-content">
+                <p>Nacimos con un propósito claro, inspirados por <strong>Patricia SPA</strong>, una mujer extraordinaria cuya generosidad nos marcó para siempre. Ella dedicó su vida a ofrecer alimento y esperanza a quienes más lo necesitaban.</p>
+                <p>Hoy, nuestro compromiso es honrar su memoria. Seleccionamos los mejores ingredientes locales para ofrecerte platos tradicionales, demostrando que la alta calidad gastronómica no tiene por qué estar reñida con precios accesibles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>El Menú Solidario</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Plato del Día</h3>
+                    <p class="desc">Receta tradicional elaborada a fuego lento, utilizando ingredientes frescos de temporada traídos directamente del mercado local.</p>
+                    <p class="price-tag">3.50 €</p>
+                    <button class="btn-select" onclick="addToCart('Plato del Día', 3.50)">Añadir a la mesa</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Pan Artesanal</h3>
+                    <p class="desc">Masa madre fermentada lentamente y horneada en piedra, siguiendo fielmente la receta centenaria de nuestras abuelas.</p>
+                    <p class="price-tag">1.00 €</p>
+                    <button class="btn-select" onclick="addToCart('Pan Artesanal', 1.00)">Añadir a la mesa</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Postre Típico</h3>
+                    <p class="desc">El broche de oro. Un dulce tradicional elaborado a mano cada mañana para terminar la velada con la mejor sonrisa.</p>
+                    <p class="price-tag">1.50 €</p>
+                    <button class="btn-select" onclick="addToCart('Postre Típico', 1.50)">Añadir a la mesa</button>
+                </div>
+            </div>
+
+            <div class="order-summary" id="order-box">
+                <h3>Su Comanda</h3>
+                <div id="cart-items">
+                    <p class="cart-empty">Aún no ha seleccionado ningún plato.</p>
+                </div>
+                
+                <div class="total-row">
+                    <div class="total-label">Total</div>
+                    <div id="total-price">0.00 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span>Patricia SPA</span>. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let total = 0.0;
+        let items = [];
+
+        function addToCart(itemName, price) {
+            items.push(itemName);
+            total += price;
+            
+            const cartDiv = document.getElementById('cart-items');
+            const totalDiv = document.getElementById('total-price');
+            const orderBox = document.getElementById('order-box');
+            
+            if(items.length === 1) {
+                cartDiv.innerHTML = "";
+                orderBox.classList.add("active");
+            }
+            
+            const itemRow = document.createElement('div');
+            itemRow.className = 'cart-item';
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.innerText = itemName;
+            
+            const priceSpan = document.createElement('span');
+            // Formattazione con la virgola per eleganza europea, se desiderato
+            priceSpan.innerText = price.toFixed(2) + ' €';
+            
+            itemRow.appendChild(nameSpan);
+            itemRow.appendChild(priceSpan);
+            cartDiv.appendChild(itemRow);
+            
+            totalDiv.innerHTML = `${total.toFixed(2)} €`;
+        }
+    </script>
+</body>
+</html>
